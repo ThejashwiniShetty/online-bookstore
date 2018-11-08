@@ -10,6 +10,7 @@ import com.theju.bookstore.domain.BrandDetail;
 import com.theju.bookstore.domain.CategoriesDetail;
 import com.theju.bookstore.dto.ItemsDto;
 import com.theju.bookstore.service.ItemService;
+import com.theju.bookstore.util.Constants;
 
 @Service
 public class ItemServiceImpl implements ItemService {
@@ -26,8 +27,13 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	public boolean addItem(ItemsDto itemsDto) {
-		// TODO Auto-generated method stub
+		generatePartNumber(Constants.ITEM_PN_BEGIN_VAL);
 		return false;
+	}
+
+	private void generatePartNumber(String beginStringVal) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

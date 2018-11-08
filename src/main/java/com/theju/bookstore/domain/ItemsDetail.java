@@ -23,6 +23,9 @@ public class ItemsDetail implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer itemId;
 	
+	@Column(name="ITEM_PART_NUMBER")
+	private String itemPartNumber;
+	
 	@Column(name="ITEM_NAME")
 	private String itemName;
 	
@@ -70,6 +73,14 @@ public class ItemsDetail implements Serializable {
 
 	public void setItemId(Integer itemId) {
 		this.itemId = itemId;
+	}
+	
+	public String getItemPartNumber() {
+		return itemPartNumber;
+	}
+
+	public void setItemPartNumber(String itemPartNumber) {
+		this.itemPartNumber = itemPartNumber;
 	}
 
 	public String getItemName() {

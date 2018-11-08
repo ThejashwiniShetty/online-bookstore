@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.theju.bookstore.domain.BrandDetail;
 import com.theju.bookstore.domain.CategoriesDetail;
+import com.theju.bookstore.dto.ItemsDto;
 import com.theju.bookstore.service.ItemService;
 
 @Controller
@@ -35,5 +37,11 @@ public class ItemController {
 		}
 		return categoriesDetails;
 	}  
+	
+	@RequestMapping(value = "/addItem", method = RequestMethod.POST)
+	public String addItem(@RequestBody ItemsDto itemsDto) {
+		itemService.addItem(itemsDto);
+		return "itemsPage";
+	}
 
 }

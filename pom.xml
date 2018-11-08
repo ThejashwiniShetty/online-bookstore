@@ -13,6 +13,9 @@
 		<elasticsearch.version>6.4.0</elasticsearch.version>
 		<mysql.connector.version>8.0.13</mysql.connector.version>
 		<commons-dbcp.version>1.4</commons-dbcp.version>
+		<jackson.core.version>2.9.6</jackson.core.version>
+		<org.apache.tomcat.maven.version>2.2</org.apache.tomcat.maven.version>
+		<org.apache.maven.plugins.maven-war.version>2.6</org.apache.maven.plugins.maven-war.version>
 	</properties>
 	<dependencies>
 		<!-- Spring dependencies -->
@@ -97,15 +100,30 @@
 			<artifactId>transport</artifactId>
 			<version>${elasticsearch.version}</version>
 		</dependency> -->
+		
+		<dependency>
+    		<groupId>com.fasterxml.jackson.core</groupId>
+   			<artifactId>jackson-annotations</artifactId>
+    		<version>${jackson.core.version}</version>
+		</dependency>
+		
 	</dependencies>
 	<build>
 		<finalName>online-bookstore</finalName>
 		<plugins>
         	<plugin>
            		<groupId>org.apache.tomcat.maven</groupId>
-            	<artifactId>tomcat7-maven-plugin</artifactId>
-            	<version>2.0</version>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>${org.apache.tomcat.maven.version}</version>
         	</plugin>
+        	<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${org.apache.maven.plugins.maven-war.version}</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
    		</plugins>
 	</build>
 </project>

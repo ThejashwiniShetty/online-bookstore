@@ -3,6 +3,7 @@ package com.theju.bookstore.dao.impl;
 import java.io.Serializable;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,10 @@ public class BaseDaoImpl implements BaseDao {
 	}
 	
 	public <T extends Serializable> List<T> fetchAllEntities(Class<T> entityClass) {
-		Session session = getSession();
-		return session.createCriteria(entityClass).list();
+		return createCriteria(entityClass).list();
 	}
-    
+	
+	public Criteria createCriteria(Class<? extends Serializable> persistentClass) {
+		return getSession().createCriteria(persistentClass);
+	}
 }

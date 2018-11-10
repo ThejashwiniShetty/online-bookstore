@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.theju.bookstore.dao.BaseDao;
+import com.theju.bookstore.domain.ItemsDetail;
 
 @Repository
 public class BaseDaoImpl implements BaseDao {
@@ -26,15 +27,20 @@ public class BaseDaoImpl implements BaseDao {
 	}
 	
 	public <T extends Serializable> T fetchEntityById(Class<T> entityClass, Serializable id) {
-		Session session = getSession();
-		return entityClass.cast(session.get(entityClass, id));
+		return entityClass.cast(getSession().get(entityClass, id));
 	}
 	
 	public <T extends Serializable> List<T> fetchAllEntities(Class<T> entityClass) {
 		return createCriteria(entityClass).list();
 	}
 	
+	public boolean saveOrUpdate(ItemsDetail itemsDetail) {
+		getSession().saveOrUpdate(itemsDetail);
+		return false;
+	}
+	
 	public Criteria createCriteria(Class<? extends Serializable> persistentClass) {
 		return getSession().createCriteria(persistentClass);
 	}
+
 }

@@ -12,6 +12,6 @@ public interface ItemService {
 
 	List<CategoriesDetail> getAllCategories();
 	
-	boolean addItem(ItemsDto itemsDto);
+	boolean saveOrUpdateItem(ItemsDto itemsDto);
 
 }

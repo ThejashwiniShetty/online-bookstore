@@ -2,6 +2,8 @@ package com.theju.bookstore.dto;
 
 import java.io.Serializable;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;;
@@ -13,9 +15,10 @@ public class ItemsDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String itemName;
+	private String itemPartNumber;
 	private String itemActualPrice;
 	private String itemSellingPrice;
-	private byte[] itemImage;
+	private MultipartFile itemImage;
 	private String brandName;
 	private String categoryName;
 	
@@ -24,6 +27,12 @@ public class ItemsDto implements Serializable {
 	}
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
+	}
+	public String getItemPartNumber() {
+		return itemPartNumber;
+	}
+	public void setItemPartNumber(String itemPartNumber) {
+		this.itemPartNumber = itemPartNumber;
 	}
 	public String getItemActualPrice() {
 		return itemActualPrice;
@@ -37,10 +46,10 @@ public class ItemsDto implements Serializable {
 	public void setItemSellingPrice(String itemSellingPrice) {
 		this.itemSellingPrice = itemSellingPrice;
 	}
-	public byte[] getItemImage() {
+	public MultipartFile getItemImage() {
 		return itemImage;
 	}
-	public void setItemImage(byte[] itemImage) {
+	public void setItemImage(MultipartFile itemImage) {
 		this.itemImage = itemImage;
 	}
 	public String getBrandName() {

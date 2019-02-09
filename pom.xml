@@ -136,6 +136,11 @@
            		<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>${org.apache.tomcat.maven.version}</version>
+				<configuration>
+	            	<path>/online-bookstore</path>
+	                <port>8080</port>
+	                <contextFile>D:\Thejashwini Shetty\Projects\OBS\context.xml</contextFile>
+	            </configuration>
         	</plugin>
         	<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

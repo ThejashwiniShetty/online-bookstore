@@ -11,11 +11,15 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<context:component-scan base-package="com.theju.bookstore" />
 
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${db.driverClassName}" />
 		<property name="url" value="${db.url}" />
 		<property name="username" value="${db.username}" />
 		<property name="password" value="${db.password}" />
+	</bean> -->
+	
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/book_store" />
 	</bean>
 
 	<!-- Hibernate 5 SessionFactory Bean definition -->

@@ -29,6 +29,10 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<!-- <prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop> -->
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
 				<!-- <prop key="hibernate.hbm2ddl.auto">create</prop> -->
 			</props>
 		</property>
@@ -40,12 +44,12 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
 	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	
+	<!-- 
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location">
 			<value>classpath:database.properties</value>
 		</property>
-	</bean>
+	</bean> -->
 	
 	<bean id="dozerBeanMapper" class="org.dozer.DozerBeanMapper">
         <property name="mappingFiles">

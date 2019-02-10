@@ -2,6 +2,7 @@ package com.theju.bookstore.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,11 +12,13 @@ import com.theju.bookstore.domain.CategoriesDetail;
 import com.theju.bookstore.domain.ItemsDetail;
 
 @Repository
-public class ItemDaoImpl extends BaseDaoImpl implements ItemDao{
+public class ItemDaoImpl extends BaseDaoImpl implements ItemDao {
 
 	@Transactional
 	public List<BrandDetail> getAllBrands() {
-		return super.fetchAllEntities(BrandDetail.class);
+		Criteria criteria = createCriteria(BrandDetail.class);
+		criteria.setCacheable(true);
+		return criteria.list();
 	}
 
 	@Transactional

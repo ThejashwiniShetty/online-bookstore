@@ -2,6 +2,7 @@ package com.theju.bookstore.controller;
 
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,8 +31,18 @@ public class ItemController {
 	@RequestMapping(value = "/allBrands", method = RequestMethod.GET)
 	public List<BrandDetail> getAllBrands() {  
 		List<BrandDetail> brandDetails = itemService.getAllBrands();
-		for (BrandDetail brandDetail : brandDetails) {
-			System.out.println("Avaliable brand: "+brandDetail.getBrandName());
+		if(CollectionUtils.isNotEmpty(brandDetails)) {
+			for (BrandDetail brandDetail : brandDetails) {
+				System.out.println("Avaliable brand: "+brandDetail.getBrandName());
+			}	
+		}
+		
+		//To be removed - to test caching functionality
+		List<BrandDetail> brandDetails2 = itemService.getAllBrands();
+		if(CollectionUtils.isNotEmpty(brandDetails2)) {
+			for (BrandDetail brandDetail : brandDetails2) {
+				System.out.println("Avaliable brand: "+brandDetail.getBrandName());
+			}	
 		}
 		return brandDetails;
 	}  
@@ -39,8 +50,10 @@ public class ItemController {
 	@RequestMapping(value = "/allCategories", method = RequestMethod.GET)
 	public List<CategoriesDetail> getAllCategories() {  
 		List<CategoriesDetail> categoriesDetails = itemService.getAllCategories();
-		for (CategoriesDetail categoriesDetail : categoriesDetails) {
-			System.out.println("Avaliable Category: "+categoriesDetail.getCategoryName());
+		if(CollectionUtils.isNotEmpty(categoriesDetails)) {
+			for (CategoriesDetail categoriesDetail : categoriesDetails) {
+				System.out.println("Avaliable Category: "+categoriesDetail.getCategoryName());
+			}
 		}
 		return categoriesDetails;
 	}  
